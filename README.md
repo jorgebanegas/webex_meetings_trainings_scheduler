@@ -28,6 +28,7 @@ Script that schedules Webex Meetings/Trainings using information provided from a
 6. edit credentials.py to include webex ID and password
 7. Insert csv file onto project folder and name it meetings.csv
 8. Follow the format of the given csv
+9. Run the script with the command python3 main.py
 
 ### Demo
 
