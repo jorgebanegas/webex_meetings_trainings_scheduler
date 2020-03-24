@@ -16,7 +16,7 @@
 
 #        https://developer.webex.com/docs/integrations
   
-#        Set the Redirect URL to: https://127.0.0.1:5000/authorize
+#        Set the Redirect URL to: http://127.0.0.1:5000/authorize
 
 #        Select the 'spark:all' scope
 
@@ -43,7 +43,7 @@
 #   4. Open a browser and navigate to:  https://127.0.0.1:5000
 
 #  The application will start the OAuth2 flow, then redirect to the /GetUser URL to display the
-#  target user's Webex Meetings API details in XML format
+#  target user's Webex Meetings API details in XML format and output the access_token into the text file. 
 
 # Copyright (c) 2020 Cisco and/or its affiliates.
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -71,9 +71,7 @@ import json
 import os
 import credentials
 
-# Edit .env file to specify your Webex integration client ID / secret
-from dotenv import load_dotenv
-load_dotenv()
+# Edit credentials file to specify your Webex integration client ID / secret
 
 # Change to true to enable request/response debug output
 DEBUG = False
@@ -253,6 +251,7 @@ def login():
     # Create the URL pointing to the web app's /authorize endpoint
     redirect_uri = url_for( 'authorize', _external=True)
 
+    print(redirect_uri)
     # Use the URL as the destination to receive the auth code, and
     # kick-off the Authclient OAuth2 login flow
     return oauth.webex.authorize_redirect( redirect_uri )
@@ -264,7 +263,7 @@ def authorize():
     # Go ahead and exchange the auth code for the access token
     # and store it in the Flask user session object
     try:
-        session[ 'token' ] = oauth.webex.authorize_access_token()
+        session['token'] = oauth.webex.authorize_access_token()
 
     except Exception as err:
 
@@ -276,6 +275,11 @@ def authorize():
 
     # Now that we have the API access token, redirect the the URL for making a
     # Webex Meetings API GetUser request
+
+    f= open("access_token.txt","w+")
+    f.write(str(session['token']))
+    f.close
+
     return redirect( url_for( 'GetUser' ), code = '302' )
 
 # Make a Meetings API GetUser request and return the raw XML to the browser
@@ -299,7 +303,7 @@ def GetUser():
 
         return response, 500
 
-    # Call the function we created above, grabbing siteName and webExId from .env, and the
+    # Call the function we created above, grabbing siteName and webExId from credentials, and the
     # access_token from the token object in the session store
     try:
 
@@ -317,9 +321,13 @@ def GetUser():
         return response, 500
 
     # Create a Flask Response object, with content of the pretty-printed XML text
-    response = make_response( etree.tostring( reply, pretty_print = True, encoding = 'unicode' ) )
+    response = make_response(etree.tostring( reply, pretty_print = True, encoding = 'unicode'))
     
     # Mark the response as XML via the Content-Type header
-    response.headers[ 'Content-Type' ] = 'application/xml'
+    response.headers['Content-Type'] = 'application/xml'
 
     return response
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

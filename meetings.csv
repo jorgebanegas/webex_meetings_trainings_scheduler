@@ -1,5 +1,5 @@
 MeetingName,Host,SessionType,MeetingTemplate,StartTime,EndTime,Duration,Attendees,TheDate,DayNumber,PeriodNumber,PeriodName
-Meeting 1,annivu@cisco.com,M,Lesson,26/03/2020 12:00,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 1
-Training 1,annivu@cisco.com,T,Lesson,26/03/2020 12:00,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 5
-Meeting 2,annivu@cisco.com,M,Lesson,26/03/2020 2:05,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 1
-Training 2,annivu@cisco.com,T,Lesson,26/03/2020 2:05,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 5
+Meeting 1,jbanegas@cisco.com,M,Lesson,26/03/2020 12:00,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 1
+Training 1,jbanegas@cisco.com,T,Lesson,26/03/2020 12:00,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 5
+Meeting 2,jbanegas@cisco.com,M,Lesson,26/03/2020 2:05,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 1
+Training 2,jbanegas@cisco.com,T,Lesson,26/03/2020 2:05,24/03/2020 12:05,20,jbanegas1997@hotmail.com; jjb87@miami.edu,19/03/2020,9,3,Period 5

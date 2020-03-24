@@ -158,16 +158,16 @@ def CreateTraining(sessionSecurityContext,
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <header>
                 <securityContext>
-                    <password>{credentials.password}</password> 
                     <siteName>{sessionSecurityContext["siteName"]}</siteName>
                     <webExID>{sessionSecurityContext["webExId"]}</webExID>
+                    <sessionTicket>{sessionSecurityContext["sessionTicket"]}</sessionTicket>
                 </securityContext>
             </header>
             <body>
                 <bodyContent xsi:type=
                     "java:com.webex.service.binding.training.CreateTrainingSession">
                     <accessControl>
-                        <listing>PUBLIC</listing>
+                        <listing>UNLISTED</listing>
                         <sessionPassword>C1sco123</sessionPassword>
                     </accessControl>
                     <schedule>
@@ -267,6 +267,8 @@ def CreateTraining(sessionSecurityContext,
         </serv:message> '''
 
 
+    # here we are reading the request xml string and appending the attendees by emails
+
     tree = ET.fromstring(request)
     root = ET.fromstring(request)
     body = root[1][0][9][0]
@@ -341,7 +343,6 @@ def CreateMeeting(sessionSecurityContext,
                         <joinTeleconfBeforeHost>false</joinTeleconfBeforeHost>
                         <duration>{duration}</duration>
                         <hostWebExID>{host}</hostWebExID>
-                        <allowAnyoneHostMeeting>True</allowAnyoneHostMeeting>
                     </schedule>
                     <telephony>
                         <telephonySupport>CALLIN</telephonySupport>
@@ -360,10 +361,11 @@ def CreateMeeting(sessionSecurityContext,
             </body>
         </serv:message>''' 
 
+    # here we are reading the request xml string and appending the attendees by emails
+    
     tree = ET.ElementTree(ET.fromstring(request))
 
     for address in attendees:
-        print(address)
         root = tree.getroot()
         body = root[1][0][2][0]
 
