@@ -25,7 +25,7 @@ Script that schedules Webex Meetings/Trainings using information provided from a
 2. install and create a virtual environment for your project (https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 3. enter the virtual environment by running source (venv name)/bin/activate 
 4. install dependencies by running pip3 install -r requirements.txt file
-6. edit credentials.py to include webex ID and password
+6. edit credentials.py to include webex ID and password (sitename, webexid, and password/token are required) or if you have oauth, follow the instructions in the ouath2.py file to generate an access token.
 7. Insert csv file onto project folder and name it meetings.csv
 8. Follow the format of the given csv
 
@@ -52,8 +52,6 @@ The script will schedule the meeting and invite the host and antendees.
 
 
 ![alt text](images/invitees.png)
-
-
 
 
 ### API Reference/Documentation:
