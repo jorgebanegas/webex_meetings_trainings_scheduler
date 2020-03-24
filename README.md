@@ -13,9 +13,9 @@ Script that schedules Webex Meetings/Trainings using information provided from a
 * Webex ID and Password
 
 ### Important Notes
-* In order to have someone else as a host, you must assign a delegete to the user who will be running the script and the host must be within the same webex organaziation.
+* In order to have someone else as a host, you must assign a delegate to the user who will be running the script and the host must be within the same webex organization.
 * Script will generate error due to not having delegate permissions
-* functions.py file will containg all the XML API calls if interested in tweaking the meeting/training details
+* functions.py file will containing all the XML API calls if interested in tweaking the meeting/training details
 
 ![alt text](images/permission.png)
 
@@ -23,12 +23,11 @@ Script that schedules Webex Meetings/Trainings using information provided from a
 # Setup instructions 
 1. install and clone this repo onto a machine that has python3 installed 
 2. install and create a virtual environment for your project (https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-3. enter the virtual environemnt by running source (venv name)/bin/activate 
+3. enter the virtual environment by running source (venv name)/bin/activate 
 4. install dependencies by running pip3 install -r requirements.txt file
 6. edit credentials.py to include webex ID and password
 7. Insert csv file onto project folder and name it meetings.csv
 8. Follow the format of the given csv
-9. Run the script with the command python3 main.py
 
 ### Demo
 
